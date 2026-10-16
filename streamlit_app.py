@@ -6,7 +6,12 @@ from recipes import get_recipes
 st.set_page_config(page_title="Recipe Recommendation", page_icon="🍲", layout="wide")
 
 st.title("🍲 Recipe Recommendation")
-st.write("Find recipes that fit your allergies, diet, cuisine, and meal preferences.")
+st.write("Explore recipes by diet, cuisine, and meal preference.")
+st.warning(
+    "Allergen tags come from the source recipe data and may be incomplete or incorrect. "
+    "Do not rely on this app to determine whether a recipe is safe for an allergy. "
+    "Check every ingredient and confirm preparation details with the cook or manufacturer."
+)
 
 recipes = get_recipes()
 allergen_options = ["Peanuts", "Shellfish", "Soy", "Eggs"]
@@ -62,4 +67,3 @@ else:
                 for step_number, step in enumerate(recipe["steps"], start=1):
                     st.markdown(f"{step_number}. {step}")
 
-st.caption("Check ingredient labels and preparation methods carefully, especially when managing food allergies.")
