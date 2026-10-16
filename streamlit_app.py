@@ -7,11 +7,6 @@ st.set_page_config(page_title="Recipe Recommendation", page_icon="🍲", layout=
 
 st.title("🍲 Recipe Recommendation")
 st.write("Explore recipes by diet, cuisine, and meal preference.")
-st.warning(
-    "Allergen tags come from the source recipe data and may be incomplete or incorrect. "
-    "Do not rely on this app to determine whether a recipe is safe for an allergy. "
-    "Check every ingredient and confirm preparation details with the cook or manufacturer."
-)
 
 recipes = get_recipes()
 allergen_options = ["Peanuts", "Shellfish", "Soy", "Eggs"]
@@ -53,10 +48,6 @@ else:
         with st.container(border=True):
             st.subheader(recipe["name"])
             st.caption(f"{recipe['cuisine']} · {recipe['meal']}")
-            if recipe["allergens"]:
-                st.write("**Tagged allergens:** " + ", ".join(recipe["allergens"]))
-            else:
-                st.write("**Tagged allergens:** None")
             left, right = st.columns(2)
             with left:
                 st.markdown("**Ingredients**")
